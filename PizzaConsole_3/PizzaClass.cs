@@ -87,7 +87,7 @@ namespace PizzaConsole_3
 
         public string Info
         {
-            get { return $"Name: {Name}, price: {Price}$, weight: {Weight}kg"; }
+            get { return $"Name: {Name}, price: {Price.ToString("F2")}$, weight: {Weight.ToString("F3")}kg"; }
         }
         public void ChangeState()
         {

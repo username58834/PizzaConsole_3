@@ -134,7 +134,7 @@ namespace PizzaConsole_3
                     switch (type)
                     {
                         case 0:
-                            pizza = new PizzaClass();
+                            pizza = new PizzaClass() { Weight = new Random().NextDouble() + 0.1};
                             break;
                         case 1:
                             pizza = new PizzaClass(name);
@@ -160,77 +160,6 @@ namespace PizzaConsole_3
                 }
             } while (pizza == null);
         }
-        /*
-        static void Add()
-        {
-            string name;
-            float price;
-            double weight;
-            PizzaClass pizza = new PizzaClass();
-
-
-            Console.WriteLine("Enter  name:");
-
-            while (true)
-            {
-                try
-                {
-                    pizza.Name = Console.ReadLine();
-                    break;
-                }
-                catch (ArgumentNullException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            Console.WriteLine("Enter  price:");
-
-            while (true)
-            {
-                bool res;
-                do
-                {
-                    res = float.TryParse(Console.ReadLine(), out price);
-                    if (!res) Console.WriteLine("Write a number");
-                } while (!res);
-                try
-                {
-
-                    pizza.Price = price;
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
-            Console.WriteLine("Enter  weight:");
-            while (true)
-            {
-                bool res;
-                do
-                {
-                    res = double.TryParse(Console.ReadLine(), out weight);
-                    if (!res) Console.WriteLine("Write a number");
-                } while (!res);
-                try
-                {
-
-                    pizza.Weight = weight;
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
-            ChooseIngredients(ref pizza);
-            pizzas.Add(pizza);
-            Console.WriteLine($"Pizza with the following parameters \"{pizza.Info}\" was added");
-        }
-        */
         static void ShowAllDetailed()
         {
             Console.WriteLine($"You have {pizzas.Count} pizzas");
@@ -477,22 +406,22 @@ namespace PizzaConsole_3
                                     {
                                         if (pizzas[GetIndex()].Sell(ref money))
                                         {
-                                            Console.WriteLine($"The pizza was bought. Money left {money}");
+                                            Console.WriteLine($"The pizza was bought. Money left {money.ToString("F2")}$");
                                         }
                                         else
                                         {
-                                            Console.WriteLine($"Not enough money. Money left {money}");
+                                            Console.WriteLine($"Not enough money. Money left {money.ToString("F2")}$");
                                         }
                                     }
                                     else
                                     {
                                         if (pizzas[GetIndex()].Sell(ref money, ref text))
                                         {
-                                            Console.WriteLine($"{text}\nThe pizza was bought. Money left {money}");
+                                            Console.WriteLine($"{text}\nThe pizza was bought. {money.ToString("F2")}$");
                                         }
                                         else
                                         {
-                                            Console.WriteLine($"{text}\nNot enough money. Money left {money}");
+                                            Console.WriteLine($"{text}\nNot enough money. {money.ToString("F2")}$");
                                         }
                                     }
                                 }
